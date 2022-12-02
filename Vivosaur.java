@@ -10,16 +10,16 @@ public class Vivosaur {
     private int defense;
     private int accuracy;
     private int evasion;
-    private List<Ability> abilities;
+    private List<Skill> skills;
     private Type type;
-    private int attackSupport;
-    private int defenseSupport;
-    private List<Integer> statusEffects;
+    private List<Integer> supportEffects;
     private Zone zone;
     private Range range;
     private double criticalChance;
+    private int attackStatus;
+    private int defenseStatus;
 
-    public Vivosaur(String name, Type type, int lp, int attack, int defense, int accuracy, int evasion, double criticalChance) {
+    public Vivosaur(String name, Type type, int lp, int attack, int defense, int accuracy, int evasion, Range range, double criticalChance) {
         this.name = name;
         this.type = type;
         this.maxlp = lp;
@@ -27,16 +27,18 @@ public class Vivosaur {
         this.defense = defense;
         this.accuracy = accuracy;
         this.evasion = evasion;
+        this.range = range;
+        skills = new ArrayList<>();
         this.currentlp = maxlp;
-        attackSupport = 0;
-        defenseSupport = 0;
-        statusEffects = new ArrayList<>();
+        supportEffects = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            statusEffects.add(0);
+            supportEffects.add(1);
         }
         zone = null;
         range = null;
         this.criticalChance = criticalChance;
+        attackStatus = 0;
+        defenseStatus = 0;
     }
 
     public Type getType() {
@@ -59,36 +61,36 @@ public class Vivosaur {
         return evasion;
     }
 
-    public int getAttackSupport() {
-        return attackSupport;
-    }
-
-    public int getDefenseSupport() {
-        return defenseSupport;
-    }
-
     public int getAttackStatus() {
-        return statusEffects.get(0);
+        return attackStatus;
     }
 
     public int getDefenseStatus() {
-        return statusEffects.get(1);
+        return defenseStatus;
+    }
+
+    public int getAttackSupport() {
+        return supportEffects.get(0);
+    }
+
+    public int getDefenseSupport() {
+        return supportEffects.get(1);
     }
 
     public int getAccuracyStatus() {
-        return statusEffects.get(2);
+        return supportEffects.get(2);
     }
 
     public int getEvasionStatus() {
-        return statusEffects.get(3);
+        return supportEffects.get(3);
     }
 
     public void takeDamage(int amount) {
 
     }
 
-    public void addAbility(Ability ability) {
-        abilities.add(ability);
+    public void addSkill(Skill skill) {
+        skills.add(skill);
     }
 
     public Zone getZone() {

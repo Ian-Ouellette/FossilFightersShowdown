@@ -93,6 +93,7 @@ public class DamageCalculator {
         double isCrit = rand.nextDouble(1);
         if (isCrit <= critChance) {
             multiplier = 1.5;
+            System.out.println("Critical!");
         }
         return multiplier;
     }
