@@ -15,8 +15,11 @@ public class Vivosaur {
     private int attackSupport;
     private int defenseSupport;
     private List<Integer> statusEffects;
+    private Zone zone;
+    private Range range;
+    private double criticalChance;
 
-    public Vivosaur(String name, Type type, int lp, int attack, int defense, int accuracy, int evasion) {
+    public Vivosaur(String name, Type type, int lp, int attack, int defense, int accuracy, int evasion, double criticalChance) {
         this.name = name;
         this.type = type;
         this.maxlp = lp;
@@ -31,6 +34,9 @@ public class Vivosaur {
         for (int i = 0; i < 4; i++) {
             statusEffects.add(0);
         }
+        zone = null;
+        range = null;
+        this.criticalChance = criticalChance;
     }
 
     public Type getType() {
@@ -67,6 +73,26 @@ public class Vivosaur {
 
     public void addAbility(Ability ability) {
         abilities.add(ability);
+    }
+
+    public Zone getZone() {
+        return zone;
+    }
+
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
+
+    public Range getRange() {
+        return range;
+    }
+
+    public void setRange(Range range) {
+        this.range = range;
+    }
+
+    public double getCriticalChance() {
+        return criticalChance;
     }
 
     @Override

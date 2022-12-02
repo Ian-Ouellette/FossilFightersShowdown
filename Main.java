@@ -7,8 +7,9 @@ public class Main {
         int defense = 36;
         int accuracy = 48;
         int evasion = 20;
+        double crit = 0.15;
 
-        Vivosaur spinax = new Vivosaur(name, type, lp, attack, defense, accuracy, evasion);
+        Vivosaur spinax = new Vivosaur(name, type, lp, attack, defense, accuracy, evasion, crit);
 
         System.out.println(spinax);
     }

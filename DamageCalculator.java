@@ -13,6 +13,8 @@ public class DamageCalculator {
         int defenseSupport = target.getDefenseSupport();
         double randomMultiplier = random.nextDouble(0.95, 1.05);
         double elementalMultiplier = elementAdvantage(target.getType(), source.getType());
+        double rangeMultiplier = rangeAdvantage(target.getZone(), source.getZone(), source.getRange());
+        double critical = source.getCriticalChance();
         
         return 0;
     }
@@ -51,6 +53,28 @@ public class DamageCalculator {
             multiplier = 1;
         }
         
+        return multiplier;
+    }
+
+    private double rangeAdvantage(Zone target, Zone source, Range sourceRange) {
+        double multiplier = 1;
+
+        if (sourceRange.equals(Range.closeRange)) {
+            if (source.equals(Zone.az)) {
+                if (target.equals(Zone.bottomsz) || target.equals(Zone.topsz)) {
+                    multiplier = 0.5;
+                }
+            } else if (source.equals(Zone.bottomsz) || source.equals(Zone.bottomsz)) {
+                multiplier = 0.5;
+            }
+        } else if (sourceRange.equals(Range.longerRange)) {
+            multiplier = 1.2;
+        } else if (sourceRange.equals(Range.longererRange)) {
+            multiplier = 1.4;
+        } else if (sourceRange.equals(Range.longestRange)) {
+            multiplier = 1.8;
+        }
+
         return multiplier;
     }
     
