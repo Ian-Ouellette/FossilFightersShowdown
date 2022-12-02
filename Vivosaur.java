@@ -67,6 +67,22 @@ public class Vivosaur {
         return defenseSupport;
     }
 
+    public int getAttackStatus() {
+        return statusEffects.get(0);
+    }
+
+    public int getDefenseStatus() {
+        return statusEffects.get(1);
+    }
+
+    public int getAccuracyStatus() {
+        return statusEffects.get(2);
+    }
+
+    public int getEvasionStatus() {
+        return statusEffects.get(3);
+    }
+
     public void takeDamage(int amount) {
 
     }

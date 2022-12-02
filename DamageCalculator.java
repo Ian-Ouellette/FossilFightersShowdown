@@ -6,17 +6,26 @@ public class DamageCalculator {
 
     public int calculateDamage(Vivosaur target, Vivosaur source, Skill skill) {
         Random random = new Random();
-        int attack = source.getAttack();
-        int power = skill.getDamage();
-        int attackSupport = source.getAttackSupport();
-        int defense = target.getDefense();
-        int defenseSupport = target.getDefenseSupport();
+        double attack = source.getAttack();
+        double power = skill.getDamage();
+        double attackSupport = source.getAttackSupport();
+        double attackStatus = source.getAttackStatus();
+        double defense = target.getDefense();
+        double defenseSupport = target.getDefenseSupport();
+        double defenseStatus = target.getDefenseStatus();
         double randomMultiplier = random.nextDouble(0.95, 1.05);
         double elementalMultiplier = elementAdvantage(target.getType(), source.getType());
         double rangeMultiplier = rangeAdvantage(target.getZone(), source.getZone(), source.getRange());
-        double critical = source.getCriticalChance();
+        double critical = critMultiplier(source.getCriticalChance());
+
+        double attackDamage = attack + power + attackStatus;
+        attackDamage = attackDamage * attackSupport;
+        double block = defenseSupport + defenseStatus;
+        block = block * defense;
+        double finalDamage = attackDamage - block;
+        finalDamage = finalDamage * randomMultiplier * elementalMultiplier * rangeMultiplier * critical;
         
-        return 0;
+        return (int)finalDamage;
     }
 
     private double elementAdvantage(Type target, Type source) {
@@ -75,6 +84,16 @@ public class DamageCalculator {
             multiplier = 1.8;
         }
 
+        return multiplier;
+    }
+
+    private double critMultiplier(double critChance) {
+        double multiplier = 1;
+        Random rand = new Random();
+        double isCrit = rand.nextDouble(1);
+        if (isCrit <= critChance) {
+            multiplier = 1.5;
+        }
         return multiplier;
     }
     
