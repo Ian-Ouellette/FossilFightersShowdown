@@ -1,16 +1,11 @@
 public class Battlefield {
     
-    private Vivosaur az1;
-    private Vivosaur topSz1;
-    private Vivosaur bottomSz1;
-    private Vivosaur ez1;
-    private Vivosaur az2;
-    private Vivosaur topSz2;
-    private Vivosaur bottomSz2;
-    private Vivosaur ez2;   
+    private Player p1;
+    private Player p2;
 
-    public Battlefield () {
-
+    public Battlefield (Player p1, Player p2) {
+        this.p1 = p1;
+        this.p2 = p2;
     }
 
 }
