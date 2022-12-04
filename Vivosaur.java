@@ -12,7 +12,7 @@ public class Vivosaur {
     private int evasion;
     private List<Skill> skills;
     private Type type;
-    private List<Integer> supportEffects;
+    private List<Double> supportEffects;
     private Zone zone;
     private Range range;
     private double criticalChance;
@@ -32,7 +32,7 @@ public class Vivosaur {
         this.currentlp = maxlp;
         supportEffects = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            supportEffects.add(1);
+            supportEffects.add(1.0);
         }
         zone = null;
         range = null;
@@ -69,19 +69,19 @@ public class Vivosaur {
         return defenseStatus;
     }
 
-    public int getAttackSupport() {
+    public double getAttackSupport() {
         return supportEffects.get(0);
     }
 
-    public int getDefenseSupport() {
+    public double getDefenseSupport() {
         return supportEffects.get(1);
     }
 
-    public int getAccuracyStatus() {
+    public double getAccuracyStatus() {
         return supportEffects.get(2);
     }
 
-    public int getEvasionStatus() {
+    public double getEvasionStatus() {
         return supportEffects.get(3);
     }
 

@@ -68,7 +68,7 @@ public class DamageCalculator {
     private double rangeAdvantage(Zone target, Zone source, Range sourceRange) {
         double multiplier = 1;
 
-        if (sourceRange.equals(Range.closeRange)) {
+        if (sourceRange.equals(Range.Close)) {
             if (source.equals(Zone.az)) {
                 if (target.equals(Zone.bottomsz) || target.equals(Zone.topsz)) {
                     multiplier = 0.5;
@@ -76,11 +76,11 @@ public class DamageCalculator {
             } else if (source.equals(Zone.bottomsz) || source.equals(Zone.bottomsz)) {
                 multiplier = 0.5;
             }
-        } else if (sourceRange.equals(Range.longerRange)) {
+        } else if (sourceRange.equals(Range.Longer)) {
             multiplier = 1.2;
-        } else if (sourceRange.equals(Range.longererRange)) {
+        } else if (sourceRange.equals(Range.Longerer)) {
             multiplier = 1.4;
-        } else if (sourceRange.equals(Range.longestRange)) {
+        } else if (sourceRange.equals(Range.Longest)) {
             multiplier = 1.8;
         }
 

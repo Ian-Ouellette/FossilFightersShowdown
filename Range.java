@@ -1,7 +1,7 @@
 public enum Range {
-    closeRange,
-    longRange,
-    longerRange,
-    longererRange,
-    longestRange;
+    Close,
+    Long,
+    Longer,
+    Longerer,
+    Longest;
 }

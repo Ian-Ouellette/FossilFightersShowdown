@@ -8,4 +8,6 @@ public class Battlefield {
         this.p2 = p2;
     }
 
+    
+
 }
