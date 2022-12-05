@@ -1,3 +1,4 @@
+package src;
 public enum Range {
     Close,
     Long,

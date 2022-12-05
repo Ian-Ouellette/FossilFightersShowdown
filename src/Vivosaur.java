@@ -1,3 +1,4 @@
+package src;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +13,9 @@ public class Vivosaur {
     private int evasion;
     private List<Skill> skills;
     private Type type;
-    private List<Double> supportEffects;
-    private List<Double> allyEffects;
-    private List<Double> enemyEffects;
+    private Double[] supportEffects;
+    private Double[] allyEffects;
+    private Double[] enemyEffects;
     private Zone zone;
     private Range range;
     private double criticalChance;
@@ -32,14 +33,9 @@ public class Vivosaur {
         this.range = range;
         skills = new ArrayList<>();
         this.currentlp = maxlp;
-        supportEffects = new ArrayList<>();
-        allyEffects = new ArrayList<>();
-        enemyEffects = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            supportEffects.add(1.0);
-            allyEffects.add(0.0);
-            enemyEffects.add(0.0);
-        }
+        supportEffects = new Double[4];
+        allyEffects = new Double[4];
+        enemyEffects = new Double[4];
         zone = null;
         range = null;
         this.criticalChance = criticalChance;
@@ -76,27 +72,35 @@ public class Vivosaur {
     }
 
     public double getAttackSupport() {
-        return supportEffects.get(0);
+        return supportEffects[0];
     }
 
     public double getDefenseSupport() {
-        return supportEffects.get(1);
+        return supportEffects[1];
     }
 
     public double getAccuracySupport() {
-        return supportEffects.get(2);
+        return supportEffects[2];
     }
 
     public double getEvasionSupport() {
-        return supportEffects.get(3);
+        return supportEffects[3];
     }
 
-    public List<Double> getAllyEffects() {
+    public Double[] getAllyEffects() {
         return allyEffects;
     }
 
-    public List<Double> getEnemyEffects() {
+    public Double[] getEnemyEffects() {
         return enemyEffects;
+    }
+
+    public void setAllyEffects(Double[] allyEffects) {
+        this.allyEffects = allyEffects;
+    }
+
+    public void setEnemyEffects(Double[] enemyEffects) {
+        this.enemyEffects = enemyEffects;
     }
 
     public void takeDamage(int amount) {

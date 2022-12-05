@@ -1,3 +1,4 @@
+package src;
 public class Battlefield {
     
     private Player p1;

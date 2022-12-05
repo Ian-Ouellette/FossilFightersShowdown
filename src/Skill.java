@@ -1,3 +1,4 @@
+package src;
 public class Skill {
     
     private String name;

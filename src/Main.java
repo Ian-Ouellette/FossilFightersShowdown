@@ -1,3 +1,4 @@
+package src;
 import java.util.List;
 
 import Data.CSV;
@@ -23,7 +24,11 @@ public class Main {
         // System.out.println(damage);
 
         String file = "data\\Vivosaur Data.csv";
-        Data.CSV csv = new CSV();
+        CSV csv = new CSV();
         List<String[]> testData = csv.readFile(file);
+        List<Vivosaur> vivosaurs = csv.getVivosaurs(testData);
+        for (Vivosaur vivosaur : vivosaurs) {
+            System.out.println(vivosaur);
+        }
     }
 }

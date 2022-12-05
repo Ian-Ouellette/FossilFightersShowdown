@@ -1,8 +1,10 @@
+package src;
+
 public enum Type {
-    Fire,
     Air,
     Water,
     Earth,
+    Fire,
     Neutral,
     Legendary;
 }
